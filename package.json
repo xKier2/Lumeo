@@ -1,0 +1,20 @@
+{
+  "name": "lumeo",
+  "version": "1.0.0",
+  "description": "AI-Powered Learning Management System (LumeoLMS)",
+  "homepage": "https://github.com/xKier2/Lumeo#readme",
+  "bugs": {
+    "url": "https://github.com/xKier2/Lumeo/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xKier2/Lumeo.git"
+  },
+  "license": "ISC",
+  "author": "Kier Tongol (xKier2)",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
