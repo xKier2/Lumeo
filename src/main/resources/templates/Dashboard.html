@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="https://thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -28,14 +28,14 @@
                 <div>
                     <p class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4 px-2 sidebar-text">Main Menu</p>
                     <div class="space-y-1">
-                        <a href="#" class="nav-link h-[52px] flex items-center gap-3 px-3 py-2 bg-[#9b0a12] text-white rounded-xl transition-all">
+                        <a th:href="@{/}" class="nav-link h-[52px] flex items-center gap-3 px-3 py-2 bg-[#9b0a12] text-white rounded-xl transition-all">
                                     <span class="w-5 h-5 flex-shrink-0 flex items-center justify-center nav-icon">
                                         <i class="fa-brands fa-dashcube"></i>
                                     </span>
                             <span class="font-medium sidebar-text">Dashboard</span>
                         </a>
 
-                        <a href="#" class="nav-link h-[52px] flex items-center gap-3 px-3 py-2 text-gray-600 hover:bg-red-100 rounded-lg transition-all">
+                        <a th:href="@{/Courses}" class="nav-link h-[52px] flex items-center gap-3 px-3 py-2 text-gray-600 hover:bg-red-100 rounded-lg transition-all">
                                     <span class="w-5 h-5 flex-shrink-0 flex items-center justify-center nav-icon">
                                         <i class="fa-brands fa-leanpub"></i>
                                     </span>
