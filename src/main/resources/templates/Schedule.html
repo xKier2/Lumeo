@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>LumeoLMS</title>
+</head>
+
+<body>
+<div th:fragments="main-body" class="flex h-screen w-full bg-gray-100 font-sans text-gray-800 overflow-hidden">
+    <aside id="sidebar" class="w-20 lg:w-64 flex-shrink-0 bg-white border-r border-gray-200 flex flex-col transition-all duration-300 relative">
+        <div class="p-6 flex items-center justify-between">
+            <div class="hidden lg:flex items-center gap-3 sidebar-text transition-all duration-300">
+                <div class="w-8 h-8 bg-gray-200 rounded-full flex-shrink-0"></div>
+                <span class="text-xl font-bold text-gray-700">Lumeo</span>
+            </div>
+
+            <button id="toggle-btn" onclick="toggleSidebar()" class="p-1 hover:bg-gray-100 rounded-lg text-gray-500 mx-auto lg:mx-0">
+            <span class="text-xl">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M9 3v18"/></svg>
+            </span>
+            </button>
+        </div>
+
+        <nav id="nav-menu" class="flex-1 px-4 py-4 space-y-8 overflow-x-hidden">
+            <div>
+                <p class="hidden lg:block text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4 px-2">MAIN MENU</p>
+                <div class="space-y-1">
+                    <a th:href="@{/}" class="nav-link h-[52px] text-gray-600 flex items-center justify-center lg:justify-start gap-3 px-3 py-2 hover:bg-red-100 rounded-lg">
+                        <i class="fa-brands fa-dashcube text-lg"></i>
+                        <span class="hidden lg:block font-medium">Dashboard</span>
+                    </a>
+
+                    <a th:href="@{/Courses}" class="nav-link h-[52px] text-gray-600 flex items-center justify-center lg:justify-start gap-3 px-3 py-2 hover:bg-red-100 rounded-lg">
+                        <i class="fa-brands fa-leanpub"></i>
+                        <span class="hidden lg:block font-medium">Courses</span>
+                    </a>
+
+                    <a th:ref="@{/Schedule}" class="nav-link h-[52px] text-gray-600 flex items-center justify-center lg:justify-start gap-3 px-3 py-2 bg-[#9b0a12] text-white rounded-lg">
+                        <i class="fa-regular fa-calendar-days"></i>
+                        <span class="hidden lg:block font-medium">Schedule</span>
+                    </a>
+                </div>
+            </div>
+
+            <div>
+                <p class="hidden lg:block text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4 px-2">TOOLS</p>
+                <div class="space-y-1">
+                    <a th:ref="@{/}" class="nav-link h-[52px] text-gray-600 flex items-center justify-center lg:justify-start gap-3 px-3 py-2 hover:bg-red-100 rounded-lg">
+                        <i class="fa-regular fa-note-sticky"></i>
+                        <span class="hidden lg:block font-medium">Quizzify</span>
+                    </a>
+                </div>
+
+                <div class="space-y-1">
+                    <a th:ref="@{/}" class="nav-link h-[52px] text-gray-600 flex items-center justify-center lg:justify-start gap-3 px-3 py-2 hover:bg-red-100 rounded-lg">
+                        <i class="fa-regular fa-cloud"></i>
+                        <span class="hidden lg:block font-medium">Cloudify</span>
+                    </a>
+                </div>
+            </div>
+
+            <div>
+                <p class="hidden lg:block text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4 px-2">ACCOUNT</p>
+                <div class="space-y-1">
+                    <a th:ref="@{/}" class="nav-link h-[52px] text-gray-600 flex items-center justify-center lg:justify-start gap-3 px-3 py-2 hover:bg-red-100 rounded-lg">
+                        <i class="fa-solid fa-user-doctor"></i>
+                        <span class="hidden lg:block font-medium">Teachers</span>
+                    </a>
+                </div>
+
+                <div class="space-y-1">
+                    <a th:ref="@{/}" class="nav-link h-[52px] text-gray-600 flex items-center justify-center lg:justify-start gap-3 px-3 py-2 hover:bg-red-100 rounded-lg">
+                        <i class="fa-solid fa-gear"></i>
+                        <span class="hidden lg:block font-medium">Settings</span>
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </aside>
+
+    <div class="flex flex-col flex-1 min-w-0 h-screen overflow-hidden">
+        <header class="flex-shrink-0 bg-white px-4 lg:px-8 py-4 flex justify-between items-center border-b border-gray-100 z-50">
+
+            <div class="flex flex-col">
+                <p class="text-[10px] lg:text-xs text-gray-400 font-medium">Hello,</p>
+                <h1 class="text-md lg:text-lg font-bold text-gray-800 leading-tight">Mr. Kier Gabriel Tongol</h1>
+            </div>
+
+            <div class="flex items-center gap-4 lg:gap-8">
+                <div class="flex items-center gap-3 lg:gap-6 text-gray-500">
+                    <button class="hover:text-gray-800"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    <button class="hover:text-gray-800"><i class="fa-solid fa-bell"></i></button>
+                </div>
+
+                <div class="hidden lg:flex w-[256px] items-center justify-between border border-gray-200 rounded-[24px] px-[10px] py-1.5 bg-white shadow-sm">
+                    <div class="flex items-center gap-3">
+                        <div class="w-[44px] h-[44px] rounded-full overflow-hidden flex items-center justify-center">
+                            <img src="../Images/UP-OfficialSeal.png" alt="Logo" class="object-contain">
+                        </div>
+                        <div class="flex flex-col leading-[1.0]">
+                            <span style="color: #841B2D; font-family: 'Times New Roman', Times, serif; letter-spacing: 0.05em;" class="text-[11px] font-bold">UNIVERSITY OF THE PHILIPPINES</span>
+                        </div>
+                    </div>
+                    <div class="w-10 h-10 rounded-full border-2 border-gray-200 overflow-hidden">
+                        <img src="../Images/user_profile.jpg" alt="User" class="w-full h-full object-cover">
+                    </div>
+                </div>
+
+                <div class="lg:hidden w-10 h-10 rounded-full border-2 border-gray-200 overflow-hidden">
+                    <img src="../Images/user_profile.jpg" alt="User" class="w-full h-full object-cover">
+                </div>
+            </div>
+        </header>
+    </div>
+</div>
+
+<script src="../Services/Sidebar.js"></script>
+</body>
+</html>
