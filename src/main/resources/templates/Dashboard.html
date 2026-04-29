@@ -3,78 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <title>LumeoLMS</title>
 </head>
 
 <body class="bg-gray-100 overflow-hidden">
     <div th:fragments="main-body" class="flex h-screen w-full bg-gray-100 font-sans text-gray-800 overflow-hidden">
-        <aside id="sidebar" class="w-20 lg:w-64 flex-shrink-0 bg-white border-r border-gray-200 flex flex-col transition-all duration-300 relative">
+
+        <aside id="sidebar" class="w-64 flex-shrink-0 bg-white border-r border-gray-200 flex flex-col transition-all duration-300 relative">
             <div class="p-6 flex items-center justify-between">
-                <div class="hidden lg:flex items-center gap-3 sidebar-text transition-all duration-300">
-                    <div class="w-8 h-8 bg-gray-200 rounded-full flex-shrink-0"></div>
+                <div class="flex items-center gap-3 sidebar-text transition-all duration-300">
+                    <div class="w-8 h-8 bg-[#9b0a12] rounded-lg flex items-center justify-center text-white">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
                     <span class="text-xl font-bold text-gray-700">Lumeo</span>
                 </div>
 
-                <button id="toggle-btn" onclick="toggleSidebar()" class="p-1 hover:bg-gray-100 rounded-lg text-gray-500 mx-auto lg:mx-0">
-            <span class="text-xl">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M9 3v18"/></svg>
-            </span>
+                <button id="toggle-btn" onclick="toggleSidebar()" class="p-1 hover:bg-gray-100 rounded-lg text-gray-500 transition-all">
+                            <span class="text-xl">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M9 3v18"/></svg>
+                            </span>
                 </button>
             </div>
 
-            <nav id="nav-menu" class="flex-1 px-4 py-4 space-y-8 overflow-x-hidden">
+            <nav id="nav-menu" class="flex-1 px-4 py-4 space-y-8 overflow-x-hidden transition-all duration-300">
                 <div>
-                    <p class="hidden lg:block text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4 px-2">MAIN MENU</p>
+                    <p class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4 px-2 sidebar-text">Main Menu</p>
                     <div class="space-y-1">
-                        <a th:href="@{/Dashboard}" class="nav-link h-[52px] text-gray-600 flex items-center justify-center lg:justify-start gap-3 px-3 py-2 bg-[#9b0a12] text-white rounded-lg">
-                            <i class="fa-brands fa-dashcube text-lg"></i>
-                            <span class="hidden lg:block font-medium">Dashboard</span>
+                        <a th:href="@{/Dashboard}" class="nav-link h-[52px] flex items-center gap-3 px-3 py-2 bg-[#9b0a12] text-white rounded-xl transition-all">
+                                        <span class="w-5 h-5 flex-shrink-0 flex items-center justify-center nav-icon">
+                                            <i class="fa-brands fa-dashcube"></i>
+                                        </span>
+                            <span class="font-medium sidebar-text">Dashboard</span>
                         </a>
 
-                        <a th:href="@{/Courses}" class="nav-link h-[52px] text-gray-600 flex items-center justify-center lg:justify-start gap-3 px-3 py-2 hover:bg-red-100 rounded-lg">
-                            <i class="fa-brands fa-leanpub"></i>
-                            <span class="hidden lg:block font-medium">Courses</span>
+                        <a th:href="@{/Courses}" class="nav-link h-[52px] flex items-center gap-3 px-3 py-2 text-gray-600 hover:bg-red-100 rounded-lg transition-all">
+                                        <span class="w-5 h-5 flex-shrink-0 flex items-center justify-center nav-icon">
+                                            <i class="fa-brands fa-leanpub"></i>
+                                        </span>
+                            <span class="sidebar-text">Courses</span>
                         </a>
 
-                        <a th:ref="@{/Schedule}" class="nav-link h-[52px] text-gray-600 flex items-center justify-center lg:justify-start gap-3 px-3 py-2 hover:bg-red-100 rounded-lg">
-                            <i class="fa-regular fa-calendar-days"></i>
-                            <span class="hidden lg:block font-medium">Schedule</span>
+                        <a th:href="@{/Schedule}" class="nav-link h-[52px] flex items-center gap-3 px-3 py-2 text-gray-600 hover:bg-red-100 rounded-lg transition-all">
+                                        <span class="w-5 h-5 flex-shrink-0 flex items-center justify-center nav-icon">
+                                            <i class="fa-regular fa-calendar-days"></i>
+                                        </span>
+                            <span class="sidebar-text">Class Schedule</span>
                         </a>
                     </div>
                 </div>
 
                 <div>
-                    <p class="hidden lg:block text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4 px-2">TOOLS</p>
+                    <p class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4 px-2 sidebar-text">Tools</p>
                     <div class="space-y-1">
-                        <a th:ref="@{/}" class="nav-link h-[52px] text-gray-600 flex items-center justify-center lg:justify-start gap-3 px-3 py-2 hover:bg-red-100 rounded-lg">
-                            <i class="fa-regular fa-note-sticky"></i>
-                            <span class="hidden lg:block font-medium">Quizzify</span>
+                        <a href="#" class="nav-link h-[52px] flex items-center gap-3 px-3 py-2 text-gray-600 hover:bg-red-100 rounded-lg transition-all">
+                                        <span class="w-5 h-5 flex-shrink-0 flex items-center justify-center nav-icon">
+                                            <i class="fa-regular fa-note-sticky"></i>
+                                        </span>
+                            <span class="sidebar-text">Quizify</span>
                         </a>
-                    </div>
-
-                    <div class="space-y-1">
-                        <a th:ref="@{/}" class="nav-link h-[52px] text-gray-600 flex items-center justify-center lg:justify-start gap-3 px-3 py-2 hover:bg-red-100 rounded-lg">
-                            <i class="fa-regular fa-cloud"></i>
-                            <span class="hidden lg:block font-medium">Cloudify</span>
+                        <a href="#" class="nav-link h-[52px] flex items-center gap-3 px-3 py-2 text-gray-600 hover:bg-red-100 rounded-lg transition-all">
+                                        <span class="w-5 h-5 flex-shrink-0 flex items-center justify-center nav-icon">
+                                            <i class="fa-regular fa-cloud"></i>
+                                        </span>
+                            <span class="sidebar-text">Cloudify</span>
                         </a>
                     </div>
                 </div>
 
                 <div>
-                    <p class="hidden lg:block text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4 px-2">ACCOUNT</p>
+                    <p class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4 px-2 sidebar-text">Account</p>
                     <div class="space-y-1">
-                        <a th:ref="@{/}" class="nav-link h-[52px] text-gray-600 flex items-center justify-center lg:justify-start gap-3 px-3 py-2 hover:bg-red-100 rounded-lg">
-                            <i class="fa-solid fa-user-doctor"></i>
-                            <span class="hidden lg:block font-medium">Teachers</span>
+                        <a href="#" class="nav-link h-[52px] flex items-center gap-3 px-3 py-2 text-gray-600 hover:bg-red-100 rounded-lg transition-all">
+                                        <span class="w-5 h-5 flex-shrink-0 flex items-center justify-center nav-icon">
+                                            <i class="fa-solid fa-user-doctor"></i>
+                                        </span>
+                            <span class="sidebar-text">Teachers</span>
                         </a>
-                    </div>
-
-                    <div class="space-y-1">
-                        <a th:ref="@{/}" class="nav-link h-[52px] text-gray-600 flex items-center justify-center lg:justify-start gap-3 px-3 py-2 hover:bg-red-100 rounded-lg">
-                            <i class="fa-solid fa-gear"></i>
-                            <span class="hidden lg:block font-medium">Settings</span>
+                        <a href="#" class="nav-link h-[52px] flex items-center gap-3 px-3 py-2 text-gray-600 hover:bg-red-100 rounded-lg transition-all">
+                                        <span class="w-5 h-5 flex-shrink-0 flex items-center justify-center nav-icon">
+                                            <i class="fa-solid fa-gear"></i>
+                                        </span>
+                            <span class="sidebar-text">Settings</span>
                         </a>
                     </div>
                 </div>
@@ -92,19 +103,22 @@
                 <div class="flex items-center gap-4 lg:gap-8">
                     <div class="flex items-center gap-3 lg:gap-6 text-gray-500">
                         <button class="hover:text-gray-800"><i class="fa-solid fa-magnifying-glass"></i></button>
-                        <button class="hover:text-gray-800"><i class="fa-solid fa-bell"></i></button>
+                        <button class="hover:text-[#9b0a12] transition-colors relative">
+                            <i class="fa-solid fa-bell"></i>
+                            <span class="absolute -top-1 -right-1 w-2 h-2 bg-red-500 rounded-full border-2 border-white"></span>
+                        </button>
                     </div>
 
-                    <div class="hidden lg:flex w-[256px] items-center justify-between border border-gray-200 rounded-[24px] px-[10px] py-1.5 bg-white shadow-sm">
+                    <div class="hidden lg:flex w-[218px] items-center justify-between border border-gray-200 rounded-[24px] px-[10px] py-1.5 bg-white shadow-sm">
                         <div class="flex items-center gap-3">
                             <div class="w-[44px] h-[44px] rounded-full overflow-hidden flex items-center justify-center">
-                                <img src="../Images/UP-OfficialSeal.png" alt="Logo" class="object-contain">
+                                <img src="../Images/DLSU-OfficialSeal.png" alt="Logo" class="object-contain">
                             </div>
                             <div class="flex flex-col leading-[1.0]">
-                                <span style="color: #841B2D; font-family: 'Times New Roman', Times, serif; letter-spacing: 0.05em;" class="text-[11px] font-bold">UNIVERSITY OF THE PHILIPPINES</span>
+                                <span style="color: #00703C; font-family: 'Times New Roman', Times, serif; letter-spacing: 0.05em;" class="text-[24px] font-bold">DLSU</span>
                             </div>
                         </div>
-                        <div class="w-10 h-10 rounded-full border-2 border-gray-200 overflow-hidden">
+                        <div class="w-14 h-14 rounded-full border-2 border-gray-200 overflow-hidden">
                             <img src="../Images/user_profile.jpg" alt="User" class="w-full h-full object-cover">
                         </div>
                     </div>
@@ -131,95 +145,77 @@
                             </div>
                         </div>
 
-                        <section class="bg-white rounded-[24px] p-6 shadow-sm border border-gray-100">
-                            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6 px-2">
-                                <h3 class="text-xl font-bold flex items-center gap-2 text-gray-800">
-                                    My Courses
-                                    <span class="text-xs font-medium cursor-pointer" style="color: #841B2D;">View All</span>
-                                </h3>
+                        <section class="w-full py-4">
+                            <div class="w-full bg-white rounded-2xl p-[6px] shadow-sm border border-gray-100 overflow-hidden">
+                                <div class="p-6">
+                                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-[18px] mb-[18px]">
+                                        <div class="flex items-center gap-[18px]">
+                                            <h2 class="text-xl md:xl font-black text-gray-800 tracking-tight">My Courses</h2>
+                                            <a th:href="@{/Courses}" class="text-xs md:text-sm font-bold text-blue-600 hover:text-blue-700 bg-blue-50 px-4 py-2 rounded-full transition-all active:scale-95">
+                                                View all
+                                            </a>
+                                        </div>
 
-                                <div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
-
-                                    <div class="relative flex-1 sm:w-[200px]">
-                                        <label
-                                                class="block text-[10px] uppercase tracking-wider text-gray-400 font-bold mb-1 ml-1">Sort
-                                            By</label>
-                                        <div class="relative">
-                                            <label>
-                                                <select
-                                                        class="appearance-none w-full h-[46px] text-sm border border-gray-200 rounded-xl bg-white pl-4 pr-10 outline-none text-gray-700 cursor-pointer transition-all duration-200 hover:border-red-300 hover:shadow-md focus:border-red-900 focus:ring-1 focus:ring-red-900">
-                                                    <option value="recent">Last Accessed</option>
-                                                    <option value="newest">Newest First</option>
-                                                    <option value="oldest">Oldest First</option>
-                                                    <option value="name_asc">Course Name (A-Z)</option>
+                                        <div class="flex items-center gap-[12px]">
+                                            <div class="relative group w-full md:w-auto">
+                                                <select class="appearance-none w-full bg-white border border-gray-200 rounded-2xl pl-5 pr-12 py-3 text-sm font-bold text-gray-600 outline-none hover:border-gray-300 cursor-pointer transition-all focus:ring-4 focus:ring-gray-50">
+                                                    <option>Sort by Latest</option>
+                                                    <option>Name A-Z</option>
                                                 </select>
-                                            </label>
-                                            <div
-                                                    class="absolute inset-y-0 right-3 flex items-center pointer-events-none text-gray-400">
-                                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                          d="M19 9l-7 7-7-7"></path>
-                                                </svg>
+                                                <i class="fa-solid fa-chevron-down absolute right-5 top-1/2 -translate-y-1/2 text-[10px] text-gray-400 group-hover:text-gray-600 transition-colors pointer-events-none"></i>
                                             </div>
-                                        </div>
-                                    </div>
 
-                                    <div class="relative flex-1 sm:w-[172px]">
-                                        <label class="block text-[10px] uppercase tracking-wider text-gray-400 font-bold mb-1 ml-1">View</label>
-                                        <div class="relative">
-                                            <label>
-                                                <select class="appearance-none w-full h-[46px] text-sm border border-gray-200 rounded-xl bg-white pl-4 pr-10 outline-none text-gray-700 cursor-pointer transition-all duration-200 hover:border-red-300 hover:shadow-md focus:border-red-900 focus:ring-1 focus:ring-red-900">
-                                                    <option value="card">Card View</option>
-                                                    <option value="list">List View</option>
-                                                    <option value="compact">Compact</option>
+                                            <div class="relative group w-full md:w-auto">
+                                                <select class="appearance-none w-full bg-white border border-gray-200 rounded-2xl pl-5 pr-12 py-3 text-sm font-bold text-gray-600 outline-none hover:border-gray-300 cursor-pointer transition-all focus:ring-4 focus:ring-gray-50">
+                                                    <option>Card View</option>
+                                                    <option>List View</option>
+                                                    <option>Grid View</option>
                                                 </select>
-                                            </label>
-                                            <div class="absolute inset-y-0 right-3 flex items-center pointer-events-none text-gray-400">
-                                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                                                </svg>
+                                                <i class="fa-solid fa-chevron-down absolute right-5 top-1/2 -translate-y-1/2 text-[10px] text-gray-400 group-hover:text-gray-600 transition-colors pointer-events-none"></i>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
 
-                            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                                <div th:each="course : ${courses}" class="bg-white rounded-3xl border border-gray-100 shadow-sm overflow-hidden hover:shadow-md transition-shadow">
-                                    <div th:style="'background-color: ' + ${course.color}" class="h-48 flex items-center justify-center relative">
-                                        <svg class="w-20 h-20 text-white opacity-90" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
-                                        </svg>
-                                    </div>
-
-                                    <div class="p-5">
-                                        <h4 class="text-lg font-bold text-gray-800 mb-1" th:text="${course.name}">Course Name</h4>
-                                        <p class="text-sm text-gray-500 mb-4" th:text="${course.instructor}">Instructor Name</p>
-
-                                        <div class="space-y-2 mb-6">
-                                            <div class="flex items-center gap-2 text-xs text-gray-600">
-                                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-                                                <span th:text="${course.students}">0 students</span>
+                                    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-[18px]">
+                                        <div th:if="${#lists.isEmpty(courses)}" class="col-span-full py-12 flex flex-col items-center justify-center border-2 border-dashed border-gray-100 rounded-[24px] bg-gray-50/50">
+                                            <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mb-4">
+                                                <i class="fa-solid fa-book-open text-gray-300 text-2xl"></i>
                                             </div>
-                                            <div class="flex items-center gap-2 text-xs text-gray-600">
-                                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-                                                <span th:text="${course.schedule}">Schedule Info</span>
-                                            </div>
+                                            <h3 class="text-lg font-bold text-gray-800">No courses enrolled</h3>
+                                            <p class="text-sm text-gray-500 mb-6 text-center px-6">Ready to start learning? Explore our catalog to find your next course.</p>
+                                            <a th:href="@{/Courses}" class="px-6 py-3 bg-[#9b0a12] text-white text-sm font-bold rounded-xl hover:bg-red-700 transition-all shadow-md shadow-red-100 active:scale-95">
+                                                Head to courses tab
+                                            </a>
                                         </div>
 
-                                        <button class="w-full py-3 bg-[#0f172a] text-white rounded-xl font-medium hover:bg-slate-800 transition-colors">
-                                            View Course
-                                        </button>
-                                    </div>
-                                </div>
+                                        <!-- Course Cards -->
+                                        <div th:unless="${#lists.isEmpty(courses)}" th:each="course : ${courses}"
+                                             class="flex flex-col w-full bg-white rounded-[24px] border border-gray-100 shadow-sm hover:shadow-2xl hover:border-red-50 transition-all duration-500 group">
 
-                                <div th:if="${#lists.isEmpty(courses)}"
-                                     class="col-span-full py-20 border-2 border-dashed border-gray-100 rounded-3xl flex flex-col items-center justify-center text-gray-400 text-center">
-                                    <i class="fa-solid fa-book-open-reader mb-4"></i>
-                                    <p class="text-lg font-semibold text-gray-700">No active subjects</p>
-                                    <p class="text-sm text-gray-400 mt-1 max-w-[220px] mx-auto">
-                                        Your courses will appear here once enrolled.
-                                    </p>
+                                            <div th:style="'background-color: ' + ${course.color}" class="h-48 md:h-56 flex items-center justify-center relative overflow-hidden rounded-t-[23px]">
+                                                <div class="absolute -right-6 -top-6 w-32 h-32 bg-black/5 rounded-full"></div>
+                                                <i class="fa-solid fa-book-bookmark text-5xl md:text-6xl text-white/90 group-hover:scale-110 transition-transform duration-500"></i>
+                                            </div>
+
+                                            <div class="p-6 flex flex-col flex-grow">
+                                                <h4 class="text-lg md:text-xl font-bold text-gray-800 mb-2 group-hover:text-[#9b0a12] transition-colors line-clamp-1" th:text="${course.name}">Course Name</h4>
+                                                <p class="text-[10px] md:text-xs font-bold text-gray-400 mb-6 uppercase tracking-[0.2em]" th:text="${course.instructor}">Instructor Name</p>
+
+                                                <div class="flex items-center justify-between mt-auto pt-6 border-t border-gray-50">
+                                                    <div class="flex -space-x-3">
+                                                        <div class="w-8 h-8 rounded-full bg-gray-100 border-2 border-white flex items-center justify-center">
+                                                            <i class="fa-solid fa-user text-[8px] text-gray-400"></i>
+                                                        </div>
+                                                        <div class="w-8 h-8 rounded-full bg-gray-50 border-2 border-white flex items-center justify-center text-[10px] font-bold text-gray-400">+</div>
+                                                    </div>
+
+                                                    <button class="flex items-center gap-2 text-sm font-black text-gray-800 group-hover:text-[#9b0a12] group-hover:gap-4 transition-all">
+                                                        View <i class="fa-solid fa-arrow-right text-sm"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </section>
@@ -238,7 +234,6 @@
                             </div>
                         </section>
                     </div>
-
                     <div class="flex flex-col items-start gap-8 w-full lg:col-span-3 space-y-8">
                         <div class="w-full bg-white rounded-2xl p-6 shadow-sm border border-gray-100 lg:min-w-0">
                             <h3 class="font-bold mb-6 text-gray-800">Today's Schedule</h3>

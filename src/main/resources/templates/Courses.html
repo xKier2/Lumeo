@@ -4,120 +4,184 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <!-- Updated FontAwesome to a working version -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <title>LumeoLMS</title>
+    <title>LumeoLMS | Courses</title>
 </head>
 
-<body>
-    <div th:fragments="main-body" class="flex h-screen w-full bg-gray-100 font-sans text-gray-800 overflow-hidden">
-        <aside id="sidebar" class="w-20 lg:w-64 flex-shrink-0 bg-white border-r border-gray-200 flex flex-col transition-all duration-300 relative">
-            <div class="p-6 flex items-center justify-between">
-                <div class="hidden lg:flex items-center gap-3 sidebar-text transition-all duration-300">
-                    <div class="w-8 h-8 bg-gray-200 rounded-full flex-shrink-0"></div>
-                    <span class="text-xl font-bold text-gray-700">Lumeo</span>
+<body class="bg-gray-50">
+<div th:fragment="main-body" class="flex h-screen w-full font-sans text-gray-800 overflow-hidden">
+    <aside id="sidebar" class="w-64 flex-shrink-0 bg-white border-r border-gray-200 flex flex-col transition-all duration-300 relative">
+        <div class="p-6 flex items-center justify-between">
+            <div class="flex items-center gap-3 sidebar-text transition-all duration-300">
+                <div class="w-8 h-8 bg-[#9b0a12] rounded-lg flex items-center justify-center text-white">
+                    <i class="fa-solid fa-graduation-cap"></i>
                 </div>
-
-                <button id="toggle-btn" onclick="toggleSidebar()" class="p-1 hover:bg-gray-100 rounded-lg text-gray-500 mx-auto lg:mx-0">
-            <span class="text-xl">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M9 3v18"/></svg>
-            </span>
-                </button>
+                <span class="text-xl font-bold text-gray-700">Lumeo</span>
             </div>
 
-            <nav id="nav-menu" class="flex-1 px-4 py-4 space-y-8 overflow-x-hidden">
-                <div>
-                    <p class="hidden lg:block text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4 px-2">MAIN MENU</p>
-                    <div class="space-y-1">
-                        <a th:href="@{/}" class="nav-link h-[52px] text-gray-600 flex items-center justify-center lg:justify-start gap-3 px-3 py-2 hover:bg-red-100 rounded-lg">
-                            <i class="fa-brands fa-dashcube text-lg"></i>
-                            <span class="hidden lg:block font-medium">Dashboard</span>
-                        </a>
+            <button id="toggle-btn" onclick="toggleSidebar()" class="p-1 hover:bg-gray-100 rounded-lg text-gray-500 transition-all">
+                            <span class="text-xl">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M9 3v18"/></svg>
+                            </span>
+            </button>
+        </div>
 
-                        <a th:href="@{/Courses}" class="nav-link h-[52px] text-gray-600 flex items-center justify-center lg:justify-start gap-3 px-3 py-2 bg-[#9b0a12] text-white rounded-lg">
-                            <i class="fa-brands fa-leanpub"></i>
-                            <span class="hidden lg:block font-medium">Courses</span>
-                        </a>
+        <nav id="nav-menu" class="flex-1 px-4 py-4 space-y-8 overflow-x-hidden transition-all duration-300">
+            <div>
+                <p class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4 px-2 sidebar-text">Main Menu</p>
+                <div class="space-y-1">
+                    <a th:href="@{/Dashboard}" class="nav-link h-[52px] flex items-center gap-3 px-3 py-2 hover:bg-red-100 rounded-xl transition-all">
+                                        <span class="w-5 h-5 flex-shrink-0 flex items-center justify-center nav-icon">
+                                            <i class="fa-brands fa-dashcube"></i>
+                                        </span>
+                        <span class="font-medium sidebar-text">Dashboard</span>
+                    </a>
 
-                        <a th:ref="@{/Schedule}" class="nav-link h-[52px] text-gray-600 flex items-center justify-center lg:justify-start gap-3 px-3 py-2 hover:bg-red-100 rounded-lg">
-                            <i class="fa-regular fa-calendar-days"></i>
-                            <span class="hidden lg:block font-medium">Schedule</span>
-                        </a>
-                    </div>
+                    <a th:href="@{/Courses}" class="nav-link h-[52px] flex items-center gap-3 px-3 py-2 text-gray-600 bg-[#9b0a12] text-white rounded-lg transition-all">
+                                        <span class="w-5 h-5 flex-shrink-0 flex items-center justify-center nav-icon">
+                                            <i class="fa-brands fa-leanpub"></i>
+                                        </span>
+                        <span class="sidebar-text">Courses</span>
+                    </a>
+
+                    <a th:href="@{/Schedule}" class="nav-link h-[52px] flex items-center gap-3 px-3 py-2 text-gray-600 hover:bg-red-100 rounded-lg transition-all">
+                                        <span class="w-5 h-5 flex-shrink-0 flex items-center justify-center nav-icon">
+                                            <i class="fa-regular fa-calendar-days"></i>
+                                        </span>
+                        <span class="sidebar-text">Class Schedule</span>
+                    </a>
+                </div>
+            </div>
+
+            <div>
+                <p class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4 px-2 sidebar-text">Tools</p>
+                <div class="space-y-1">
+                    <a href="#" class="nav-link h-[52px] flex items-center gap-3 px-3 py-2 text-gray-600 hover:bg-red-100 rounded-lg transition-all">
+                                        <span class="w-5 h-5 flex-shrink-0 flex items-center justify-center nav-icon">
+                                            <i class="fa-regular fa-note-sticky"></i>
+                                        </span>
+                        <span class="sidebar-text">Quizify</span>
+                    </a>
+                    <a href="#" class="nav-link h-[52px] flex items-center gap-3 px-3 py-2 text-gray-600 hover:bg-red-100 rounded-lg transition-all">
+                                        <span class="w-5 h-5 flex-shrink-0 flex items-center justify-center nav-icon">
+                                            <i class="fa-regular fa-cloud"></i>
+                                        </span>
+                        <span class="sidebar-text">Cloudify</span>
+                    </a>
+                </div>
+            </div>
+
+            <div>
+                <p class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4 px-2 sidebar-text">Account</p>
+                <div class="space-y-1">
+                    <a href="#" class="nav-link h-[52px] flex items-center gap-3 px-3 py-2 text-gray-600 hover:bg-red-100 rounded-lg transition-all">
+                                        <span class="w-5 h-5 flex-shrink-0 flex items-center justify-center nav-icon">
+                                            <i class="fa-solid fa-user-doctor"></i>
+                                        </span>
+                        <span class="sidebar-text">Teachers</span>
+                    </a>
+                    <a href="#" class="nav-link h-[52px] flex items-center gap-3 px-3 py-2 text-gray-600 hover:bg-red-100 rounded-lg transition-all">
+                                        <span class="w-5 h-5 flex-shrink-0 flex items-center justify-center nav-icon">
+                                            <i class="fa-solid fa-gear"></i>
+                                        </span>
+                        <span class="sidebar-text">Settings</span>
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </aside>
+
+    <!-- MAIN CONTENT AREA -->
+    <div class="flex-1 flex flex-col min-w-0 overflow-hidden">
+
+        <!-- HEADER -->
+        <header class="flex-shrink-0 bg-white px-4 lg:px-8 py-4 flex justify-between items-center border-b border-gray-100 z-50">
+
+            <div class="flex flex-col">
+                <p class="text-[10px] lg:text-xs text-gray-400 font-medium">Hello,</p>
+                <h1 class="text-md lg:text-lg font-bold text-gray-800 leading-tight">Mr. Kier Gabriel Tongol</h1>
+            </div>
+
+            <div class="flex items-center gap-4 lg:gap-8">
+                <div class="flex items-center gap-3 lg:gap-6 text-gray-500">
+                    <button class="hover:text-gray-800"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    <button class="hover:text-[#9b0a12] transition-colors relative">
+                        <i class="fa-solid fa-bell"></i>
+                        <span class="absolute -top-1 -right-1 w-2 h-2 bg-red-500 rounded-full border-2 border-white"></span>
+                    </button>
                 </div>
 
-                <div>
-                    <p class="hidden lg:block text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4 px-2">TOOLS</p>
-                    <div class="space-y-1">
-                        <a th:ref="@{/}" class="nav-link h-[52px] text-gray-600 flex items-center justify-center lg:justify-start gap-3 px-3 py-2 hover:bg-red-100 rounded-lg">
-                            <i class="fa-regular fa-note-sticky"></i>
-                            <span class="hidden lg:block font-medium">Quizzify</span>
-                        </a>
-                    </div>
-
-                    <div class="space-y-1">
-                        <a th:ref="@{/}" class="nav-link h-[52px] text-gray-600 flex items-center justify-center lg:justify-start gap-3 px-3 py-2 hover:bg-red-100 rounded-lg">
-                            <i class="fa-regular fa-cloud"></i>
-                            <span class="hidden lg:block font-medium">Cloudify</span>
-                        </a>
-                    </div>
-                </div>
-
-                <div>
-                    <p class="hidden lg:block text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4 px-2">ACCOUNT</p>
-                    <div class="space-y-1">
-                        <a th:ref="@{/}" class="nav-link h-[52px] text-gray-600 flex items-center justify-center lg:justify-start gap-3 px-3 py-2 hover:bg-red-100 rounded-lg">
-                            <i class="fa-solid fa-user-doctor"></i>
-                            <span class="hidden lg:block font-medium">Teachers</span>
-                        </a>
-                    </div>
-
-                    <div class="space-y-1">
-                        <a th:ref="@{/}" class="nav-link h-[52px] text-gray-600 flex items-center justify-center lg:justify-start gap-3 px-3 py-2 hover:bg-red-100 rounded-lg">
-                            <i class="fa-solid fa-gear"></i>
-                            <span class="hidden lg:block font-medium">Settings</span>
-                        </a>
-                    </div>
-                </div>
-            </nav>
-        </aside>
-
-        <div class="flex flex-col flex-1 min-w-0 h-screen overflow-hidden">
-            <header class="flex-shrink-0 bg-white px-4 lg:px-8 py-4 flex justify-between items-center border-b border-gray-100 z-50">
-
-                <div class="flex flex-col">
-                    <p class="text-[10px] lg:text-xs text-gray-400 font-medium">Hello,</p>
-                    <h1 class="text-md lg:text-lg font-bold text-gray-800 leading-tight">Mr. Kier Gabriel Tongol</h1>
-                </div>
-
-                <div class="flex items-center gap-4 lg:gap-8">
-                    <div class="flex items-center gap-3 lg:gap-6 text-gray-500">
-                        <button class="hover:text-gray-800"><i class="fa-solid fa-magnifying-glass"></i></button>
-                        <button class="hover:text-gray-800"><i class="fa-solid fa-bell"></i></button>
-                    </div>
-
-                    <div class="hidden lg:flex w-[256px] items-center justify-between border border-gray-200 rounded-[24px] px-[10px] py-1.5 bg-white shadow-sm">
-                        <div class="flex items-center gap-3">
-                            <div class="w-[44px] h-[44px] rounded-full overflow-hidden flex items-center justify-center">
-                                <img src="../Images/UP-OfficialSeal.png" alt="Logo" class="object-contain">
-                            </div>
-                            <div class="flex flex-col leading-[1.0]">
-                                <span style="color: #841B2D; font-family: 'Times New Roman', Times, serif; letter-spacing: 0.05em;" class="text-[11px] font-bold">UNIVERSITY OF THE PHILIPPINES</span>
-                            </div>
+                <div class="hidden lg:flex w-[218px] items-center justify-between border border-gray-200 rounded-[24px] px-[10px] py-1.5 bg-white shadow-sm">
+                    <div class="flex items-center gap-3">
+                        <div class="w-[44px] h-[44px] rounded-full overflow-hidden flex items-center justify-center">
+                            <img src="../Images/DLSU-OfficialSeal.png" alt="Logo" class="object-contain">
                         </div>
-                        <div class="w-10 h-10 rounded-full border-2 border-gray-200 overflow-hidden">
-                            <img src="../Images/user_profile.jpg" alt="User" class="w-full h-full object-cover">
+                        <div class="flex flex-col leading-[1.0]">
+                            <span style="color: #00703C; font-family: 'Times New Roman', Times, serif; letter-spacing: 0.05em;" class="text-[24px] font-bold">DLSU</span>
                         </div>
                     </div>
-
-                    <div class="lg:hidden w-10 h-10 rounded-full border-2 border-gray-200 overflow-hidden">
+                    <div class="w-14 h-14 rounded-full border-2 border-gray-200 overflow-hidden">
                         <img src="../Images/user_profile.jpg" alt="User" class="w-full h-full object-cover">
                     </div>
                 </div>
-            </header>
-        </div>
+
+                <div class="lg:hidden w-10 h-10 rounded-full border-2 border-gray-200 overflow-hidden">
+                    <img src="../Images/user_profile.jpg" alt="User" class="w-full h-full object-cover">
+                </div>
+            </div>
+        </header>
+
+        <section class="w-full h-full py-4 px-8">
+            <div class="w-full h-full bg-white rounded-2xl p-[6px] shadow-sm border border-gray-100 overflow-hidden">
+                <!-- 1. Added flex flex-col and h-full here -->
+                <div class="p-6 flex flex-col h-full">
+
+                    <!-- Header stays at the top -->
+                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-[18px] mb-[18px]">
+                        <div class="flex items-center gap-[18px]">
+                            <h2 class="text-xl md:xl font-black text-gray-800 tracking-tight">My Courses</h2>
+                        </div>
+                        <!-- ... (Rest of your header controls) ... -->
+                        <div class="flex items-center gap-[12px]">
+                            <!-- Sorting/Buttons code remains same -->
+                            <div class="relative group w-full md:w-auto md:h-auto">
+                                <button class="w-full md:w-auto px-8 py-3 bg-[#9b0a12] text-white text-sm font-black rounded-2xl shadow-lg shadow-red-900/20 hover:bg-[#b30c14] hover:shadow-xl hover:-translate-y-0.5 active:scale-95 active:translate-y-0 transition-all duration-200 focus:ring-4 focus:ring-red-100 flex items-center justify-center gap-2">
+                                    <i class="fa-solid fa-plus text-xs"></i>
+                                    <a href="#" class="no-underline text-white">Add New Course</a>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 2. Added flex-grow to the grid container -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-[18px] flex-grow">
+
+                        <!-- 3. Changed py-12 to h-full -->
+                        <div th:if="${#lists.isEmpty(courses)}" class="col-span-full h-full flex flex-col items-center justify-center border-2 border-dashed border-gray-100 rounded-[24px] bg-gray-50/50">
+                            <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mb-4">
+                                <i class="fa-solid fa-book-open text-gray-300 text-2xl"></i>
+                            </div>
+                            <h3 class="text-lg font-bold text-gray-800">No courses enrolled</h3>
+                            <p class="text-sm text-gray-500 mb-6 text-center px-6">Ready to start learning? Explore our catalog to find your next course.</p>
+                        </div>
+
+                        <!-- Course Cards logic remains the same -->
+                        <div th:unless="${#lists.isEmpty(courses)}" th:each="course : ${courses}"
+                             class="flex flex-col w-full bg-white rounded-[24px] border border-gray-100 shadow-sm hover:shadow-2xl hover:border-red-50 transition-all duration-500 group">
+                            <!-- ... card content ... -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
-    <script src="../Services/Sidebar.js"></script>
-    <script src="../Services/Sidebar.js"></script>
+</div>
+
+
+<script src="../Services/Sidebar.js"></script>
+<script src="../Services/Sidebar.js"></script>
+</script>
 </body>
 </html>
